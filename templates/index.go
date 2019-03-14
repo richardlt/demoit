@@ -30,13 +30,14 @@ func Index(content []byte) string {
         </script>
       </head>
       <body>
-      <div id="top">` + string(content) + `
-      <div id="nav">
-        <a class="{{ if not .PrevURL }}disabled{{ end }}" onclick="prev()">&lt;</a>
-        <a class="{{ if not .NextURL }}disabled{{ end }}" onclick="next()">&gt;</a>
+      <div class="wrapper">
+        <div class="content">` + string(content) + `</div>
+        <div class="nav">
+          <a class="{{ if not .PrevURL }}disabled{{ end }}" onclick="prev()">&lt;</a>
+          <a class="{{ if not .NextURL }}disabled{{ end }}" onclick="next()">&gt;</a>
+        </div>
+        <div class="progression" style="width: calc(100vw * {{ .CurrentStep }} / {{ .StepCount }})"></div>
       </div>
-      </div>
-      <div id="progression" style="width: calc(100vw * {{ .CurrentStep }} / {{ .StepCount }})"></div>
       </body>
       <script src="/js/demoit.js"></script>
       {{ if .DevMode }}<script src="http://localhost:35729/livereload.js"></script>{{ end }}
